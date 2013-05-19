@@ -1,4 +1,7 @@
-twote_site
-==========
+# twote_site
 
-twote site
+## Installation
+
+    $ npm install
+    $ bower install
+    $ grunt
