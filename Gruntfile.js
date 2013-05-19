@@ -104,7 +104,8 @@ module.exports = function (grunt) {
     },
     watch: {
       files: [
-        'lib/',
+        'lib/*',
+        'lib/**/*',
         'less/*',
         'img/*'
       ],
