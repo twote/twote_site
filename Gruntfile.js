@@ -110,7 +110,7 @@ module.exports = function (grunt) {
       ],
       tasks: [
         'exec:clear',
-        // 'jshint',
+        'jshint',
         'less',
         'concat',
         'clean:less',
@@ -140,7 +140,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  // grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -149,7 +149,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('default', [
-    // 'jshint',
+    'jshint',
     'less',
     'concat',
     'cssmin',
