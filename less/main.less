@@ -4,7 +4,7 @@ body {
   margin: 0 auto;
   .box-sizing(border-box);
   text-rendering: optimizeLegibility !important;
-  background: #f5f5f5;
+  background: @background;
 }
 
 .tw-layout {
@@ -25,9 +25,9 @@ header {
 }
 
 header h1 {
-  font-family: "Monda", Arial, sans-serif;
-  letter-spacing: -8px;
-  color: @blue;
+  font-family: "LeagueGothicRegular", Arial, sans-serif;
+  letter-spacing: 0px;
+  color: @textcolor;
   font-size: 124px;
   line-height: 124px;
   margin: 0 20px ;
@@ -40,7 +40,7 @@ header h1 .suffix {
 }
 
 header p {
-  color: #666;
+  color: @headersubline;
   font-size: 20px;
   line-height: 20px;
   margin: 0;
@@ -49,8 +49,9 @@ header p {
 }
 
 nav {
-  color: #fff;
-  background: @blue;
+  color: @navforeground;
+  background: @navbackground;
+  margin-bottom: 50px;
 }
 
 nav ol {
@@ -63,14 +64,14 @@ nav ol li {
 }
 
 nav ol li a {
-  background: @blue;
+  background: @navbackground;
   text-align: center;
-  color: #fff;
-  border: 1px solid @blue;
-  border-right: 1px solid #fff;
+  color: @navforeground;
+  border: none;
+  border-right: 1px solid @navforeground;
   text-decoration: none;
   margin: 0;
-  padding: 5px 10px;
+  padding: 6px 10px;
   display: block;
   float: left;
   font-size: 16px;
@@ -86,7 +87,7 @@ nav ol li a:after {
   left: 50px;
   border-width: 10px 10px 0;
   border-style: solid;
-  border-color: @blue transparent;
+  border-color: @navbackground transparent;
   display: block;
   width: 0;
   .transition(bottom 0.5s ease);
@@ -99,7 +100,7 @@ nav ol li a.active:after {
   left: 50px;
   border-width: 10px 10px 0;
   border-style: solid;
-  border-color: @blue transparent;
+  border-color: @navbackground transparent;
   display: block;
   width: 0;
 }
@@ -111,7 +112,7 @@ nav ol li a:hover:after {
 // nav ol li a:hover,
 // nav ol li a.active {
 //   background: #fff;
-//   color: @blue;
+//   color: @textcolor;
 // }
 
 nav form {
@@ -120,19 +121,65 @@ nav form {
 }
 
 nav input {
-  color: @blue;
+  color: @navforeground;
   outline: none;
-  border: 1px solid @blue;
+  border: 1px solid @navbackground;
+  background: lighten(@navbackground, 20%);
   float: right;
   font-size: 16px;
   line-height: 20px;
   padding: 10px;
 }
 
-.placeholder-color(@blue);
+.placeholder-color(@navforeground);
 
 nav input:focus {
   outline: none;
+}
+
+ol.tw-twotes {
+  color: @textcolor;
+  margin: 0;
+  padding: 0;
+}
+
+ol.tw-twotes li {
+  color: @smoke;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: "LeagueGothicRegular", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  border-top: 1px solid @grey;
+  margin: 0;
+  padding: 20px 20px 15px 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+ol.tw-twotes li:hover {
+  background: darken(@yellow, 30%);
+}
+
+ol.tw-twotes li .item {
+  display: block;
+  float: left;
+  margin-right: 1em;
+}
+
+ol.tw-twotes li .votecount {
+  font-size: 20px;
+  line-height: 36px;
+  width: 120px;
+  color: @lightgrey;
+}
+
+ol.tw-twotes li .lastvote {
+  font-size: 20px;
+  line-height: 36px;
+  float: right;
+  color: @textcolor;
 }
 
 /**
