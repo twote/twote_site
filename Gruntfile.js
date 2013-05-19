@@ -78,6 +78,17 @@ module.exports = function (grunt) {
         }
       }
     },
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'build/index.html': 'build/index.html',
+        }
+      }
+    },
     imageoptim: {
       files: [
         'build/img'
@@ -91,6 +102,13 @@ module.exports = function (grunt) {
         src: ['img/*'],
         dest: 'build/img/'
       },
+      fonts: {
+        filter: 'isFile',
+        expand: true,
+        flatten: true,
+        src: ['less/fonts/*'],
+        dest: 'build/fonts/'
+      },
       html: {
         filter: 'isFile',
         expand: true,
@@ -100,7 +118,7 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      images: ['build/img/*', 'build/img/.DS_Store'],
+      images: ['build/img/*', 'build/fonts/*', 'build/img/.DS_Store'],
       less: 'less/*.css'
     },
     watch: {
@@ -147,6 +165,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-imageoptim');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
@@ -159,6 +178,7 @@ module.exports = function (grunt) {
     'uglify',
     'clean',
     'copy',
+    'htmlmin',
     // 'imageoptim',
     'notify:prod'
   ]);
