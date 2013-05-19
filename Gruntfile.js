@@ -49,6 +49,7 @@ module.exports = function (grunt) {
           'components/jquery/jquery.js',
           'components/underscore/underscore.js',
           'components/backbone/backbone.js',
+          'components/highcharts/highcharts.js',
           'lib/config.js',
           'lib/helper/*',
           'lib/model/*',
