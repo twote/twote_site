@@ -1,30 +1,14 @@
 body {
   -webkit-font-smoothing: antialiased;
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
   .box-sizing(border-box);
   text-rendering: optimizeLegibility !important;
+  background: #f5f5f5;
 }
 
-header {
-  text-align: center;
-  margin: 50px 0;
-}
-
-header h1 {
-  font-family: "Monda", Arial, sans-serif;
-  letter-spacing: -2px;
-  color: @blue;
-  font-size: 124px;
-  line-height: 124px;
-  margin: 0;
-  padding: 0;
-  text-rendering: optimizeLegibility;
-  font-weight: 400;
-}
-
-header h1 .suffix {
-
+.tw-layout {
+  margin: 0 50px ;
 }
 
 .fw-regular {
@@ -35,21 +19,42 @@ header h1 .suffix {
   font-weight: 700;
 }
 
+header {
+  text-align: center;
+  margin: 50px 0;
+}
+
+header h1 {
+  font-family: "Monda", Arial, sans-serif;
+  letter-spacing: -8px;
+  color: @blue;
+  font-size: 124px;
+  line-height: 124px;
+  margin: 0 20px ;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+}
+
+header h1 .suffix {
+
+}
+
 header p {
   color: #666;
   font-size: 20px;
   line-height: 20px;
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
 }
 
 nav {
-  background: @blue;
   color: #fff;
+  background: @blue;
 }
 
 nav ol {
-  margin: 0 0 0 10px;
+  margin: 0;
   padding: 0;
 }
 
@@ -58,10 +63,11 @@ nav ol li {
 }
 
 nav ol li a {
+  background: @blue;
   text-align: center;
   color: #fff;
   border: 1px solid @blue;
-  border-left: none;
+  border-right: 1px solid #fff;
   text-decoration: none;
   margin: 0;
   padding: 5px 10px;
@@ -69,13 +75,44 @@ nav ol li a {
   float: left;
   font-size: 16px;
   line-height: 30px;
+  width: 100px;
+  position: relative;
 }
 
-nav ol li a:hover,
-nav ol li a.active {
-  background: #fff;
-  color: @blue;
+nav ol li a:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 50px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: @blue transparent;
+  display: block;
+  width: 0;
+  .transition(bottom 0.5s ease);
 }
+
+nav ol li a.active:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: @blue transparent;
+  display: block;
+  width: 0;
+}
+
+nav ol li a:hover:after {
+  bottom: -10px;
+}
+
+// nav ol li a:hover,
+// nav ol li a.active {
+//   background: #fff;
+//   color: @blue;
+// }
 
 nav form {
   margin: 0;
@@ -91,6 +128,8 @@ nav input {
   line-height: 20px;
   padding: 10px;
 }
+
+.placeholder-color(@blue);
 
 nav input:focus {
   outline: none;

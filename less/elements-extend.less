@@ -1,0 +1,13 @@
+.transition(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.placeholder-color(@color: #999) {
+  input::-webkit-input-placeholder { color: @color; }
+  input:-moz-placeholder { color: @color; }
+  input::-moz-placeholder { color: @color; }
+  input:-ms-input-placeholder { color: @color; }
+}
