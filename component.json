@@ -1,0 +1,9 @@
+{
+  "name": "twote_site",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~2.0.0",
+    "underscore": "~1.4.4",
+    "backbone": "~1.0.0"
+  }
+}
