@@ -153,9 +153,9 @@ module.exports = function (grunt) {
         'exec:clear',
         'jshint',
         'clean',
+        'copy',
         'less',
         'concat',
-        'copy',
         'notify:dev'
       ]
     },
@@ -193,11 +193,11 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'clean',
+    'copy',
     'less',
     'concat',
     'cssmin',
     'uglify',
-    'copy',
     'htmlmin',
     'regex-replace',
     'notify:prod'

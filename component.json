@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "~2.0.0",
     "underscore": "~1.4.4",
-    "backbone": "~1.0.0"
+    "backbone": "~1.0.0",
+    "highcharts": "~3.0.1"
   }
 }
