@@ -1,0 +1,66 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title twote
+    link(rel='stylesheet', type='text/css', href='twote.css')
+    script
+      window.onload = function () {
+      var s = document.createElement('script');
+      s.src = 'twote.js';
+      document.body.appendChild(s);
+      };
+  body
+    .tw-layout
+      header.tw-header
+        h1
+          a(href='/')
+            | TWOTE
+            span.suffix .IO
+        p
+          span.quotes „
+          | To put something up for a vote
+          br
+          | on the social network twitter
+          span.quotes ”
+          br
+          span.source – Urban Dictionary
+      nav.tw-navigation.font-league.cf
+        ol
+          li
+            a(href='') WTF?
+          li
+            a.active(href='') Newest
+          li
+            a(href='') Recent
+          li.last
+            a(href='') Most Voted
+        form(action='')
+          input#tw-search(type='text', placeholder='Search', name='tw-search')
+      section.tw-content
+        ol.tw-twotes
+          li.cf.head
+            span.item.votecount Votes
+            span.item.topic Topic
+            span.item.lastvote Last Acvitity
+          li.cf
+            span.item.votecount 1.234
+            span.item.topic beststorageservice
+            span.item.lastvote 2013-05-19 23:34
+          li.cf
+            span.item.votecount 615
+            span.item.topic bigbangtheory_favouritecharacter
+            span.item.lastvote 2013-05-19 23:34
+          li.cf
+            span.item.votecount 271
+            span.item.topic coolest_number_of_all_times
+            span.item.lastvote 2013-05-19 23:34
+          li.cf
+            span.item.votecount 178
+            span.item.topic favouritedrink
+            span.item.lastvote 2013-05-19 23:34
+          li.cf
+            span.item.votecount 98
+            span.item.topic bestlanguage
+            span.item.lastvote 2013-05-19 23:34
+      footer.tw-footer
