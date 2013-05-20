@@ -38,24 +38,10 @@ module.exports = function (grunt) {
     },
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true
+        jshintrc: '.jshintrc'
       },
-      app: {
-        options: {
-          browser: true
-        },
-        files: {
-          src: ['index.js']
-        }
+      files: {
+        src: ['lib/**/*.js']
       }
     },
     less: {
@@ -78,10 +64,10 @@ module.exports = function (grunt) {
           'lib/collection/*',
           'lib/view/*',
           'lib/router/*',
-          'lib/main.js',
+          'lib/main.js'
         ],
         dest: 'build/twote.js'
-      },
+      }
     },
     uglify: {
       scripts: {
@@ -110,7 +96,7 @@ module.exports = function (grunt) {
           collapseWhitespace: true
         },
         files: {
-          'build/index.html': 'build/index.html',
+          'build/index.html': 'build/index.html'
         }
       }
     },
@@ -154,10 +140,7 @@ module.exports = function (grunt) {
         dest: 'build'
       }
     },
-    clean: {
-      images: ['build/img/*', 'build/fonts/*', 'build/img/.DS_Store'],
-      less: 'less/*.css'
-    },
+    clean: ['build/**/*'],
     watch: {
       files: [
         'index.html',
@@ -169,10 +152,9 @@ module.exports = function (grunt) {
       tasks: [
         'exec:clear',
         'jshint',
+        'clean',
         'less',
         'concat',
-        'clean:less',
-        'clean:images',
         'copy',
         'notify:dev'
       ]
@@ -206,14 +188,15 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-regex-replace');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-devtools');
 
   grunt.registerTask('default', [
     'jshint',
+    'clean',
     'less',
     'concat',
     'cssmin',
     'uglify',
-    'clean',
     'copy',
     'htmlmin',
     'regex-replace',
