@@ -118,13 +118,6 @@ module.exports = function (grunt) {
       }
     },
     copy: {
-      img: {
-        filter: 'isFile',
-        expand: true,
-        flatten: true,
-        src: ['img/*'],
-        dest: 'build/img/'
-      },
       fonts: {
         filter: 'isFile',
         expand: true,
@@ -138,6 +131,25 @@ module.exports = function (grunt) {
         flatten: true,
         src: ['index.html'],
         dest: 'build'
+      }
+    },
+    imagemin: {
+      dist: {
+        options: {
+          optimizationLevel: 4
+        },
+        files: {
+          'build/img': 'img/*'
+        }
+      },
+      dev: {
+        options: {
+          optimizationLevel: 0
+        },
+        files: {
+          'dev/img.png': 'src/img.png',
+          'dev/img.jpg': 'src/img.jpg'
+        }
       }
     },
     clean: ['build/**/*'],
@@ -154,6 +166,7 @@ module.exports = function (grunt) {
         'jshint',
         'clean',
         'copy',
+        'imagemin:dev',
         'less',
         'concat',
         'notify:dev'
@@ -194,6 +207,7 @@ module.exports = function (grunt) {
     'jshint',
     'clean',
     'copy',
+    'imagemin:dist',
     'less',
     'concat',
     'cssmin',
