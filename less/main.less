@@ -8,6 +8,8 @@ body {
   width: 100%;
   margin: 0 auto;
   background: @background;
+  color: @smoke;
+  font: 16px/1.5em normal "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .font-league {
@@ -215,6 +217,7 @@ ol.tw-twotes li {
   padding: 0;
   font-family: "LeagueGothicRegular", Helvetica, Arial, sans-serif;
   font-size: 40px;
+  line-height: 48px;
   text-transform: uppercase;
   border-top: 1px solid @grey;
   margin: 0;
@@ -234,18 +237,19 @@ ol.tw-twotes li .item {
   margin-right: 1em;
 }
 
-ol.tw-twotes li .votecount {
+ol.tw-twotes li .votecount,
+ol.tw-twotes li .lastvote {
   font-size: 24px;
-  line-height: 48px;
-  width: 120px;
+  color: @textcolor;
+}
+
+ol.tw-twotes li .votecount {
   color: @greylight;
+  width: 120px;
 }
 
 ol.tw-twotes li .lastvote {
-  font-size: 24px;
-  line-height: 48px;
   float: right;
-  color: @textcolor;
 }
 
 ol.tw-twotes li.head,
@@ -268,6 +272,17 @@ ol.tw-twotes li.head .topic {
 ol.tw-twotes li.head .lastvote {
   line-height: 24px;
   font-size: 24px;
+}
+
+/**
+ * FOOTER
+ */
+
+.tw-footer {
+  display: block;
+  margin: 100px 0 25px 0;
+  text-align: center;
+  font-size: 14px;
 }
 
 /**
