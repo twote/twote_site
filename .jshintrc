@@ -26,7 +26,6 @@
   "maxstatements": 40,
   "maxlen": 80,
   "maxerr": 200,
-  "es5": true,
   "white": true,
   "camelcase": false,
   "node": true,
