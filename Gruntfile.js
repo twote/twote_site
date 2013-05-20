@@ -89,18 +89,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    jade: {
-      compile: {
-        options: {
-          data: {
-            debug: false
-          }
-        },
-        files: {
-          'build/index.html': ['index.jade']
-        }
-      }
-    },
     htmlmin: {
       dist: {
         options: {
@@ -143,6 +131,13 @@ module.exports = function (grunt) {
         flatten: true,
         src: ['less/fonts/*'],
         dest: 'build/fonts/'
+      },
+      html: {
+        filter: 'isFile',
+        expand: true,
+        flatten: true,
+        src: ['index.html'],
+        dest: 'build'
       }
     },
     clean: ['build/**/*'],
@@ -158,7 +153,6 @@ module.exports = function (grunt) {
         'exec:clear',
         'jshint',
         'clean',
-        'jade',
         'less',
         'concat',
         'copy',
@@ -191,7 +185,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-regex-replace');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
@@ -205,8 +198,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy',
-    // 'htmlmin',
-    'jade',
+    'htmlmin',
     'regex-replace',
     'notify:prod'
   ]);
