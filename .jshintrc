@@ -2,7 +2,8 @@
   "globals": {
     "Backbone": true,
     "jQuery": true,
-    "_": true
+    "_": true,
+    "io": true
   },
   "bitwise": true,
   "curly": true,

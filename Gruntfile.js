@@ -58,6 +58,7 @@ module.exports = function (grunt) {
           'components/underscore/underscore.js',
           'components/backbone/backbone.js',
           'components/highcharts/highcharts.js',
+          'components/socket.io-client/dist/socket.io.js',
           'lib/config.js',
           'lib/helper/*',
           'lib/model/*',
