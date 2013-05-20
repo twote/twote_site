@@ -89,6 +89,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    htmlrefs: {
+      dist: {
+        src: 'index.html',
+        dest: 'build/',
+        options: {
+          'minified': '.min'
+        }
+      }
+    },
     imageoptim: {
       files: [
         'build/img'
@@ -167,6 +176,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-imageoptim');
+  grunt.loadNpmTasks('grunt-htmlrefs');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
 
@@ -178,6 +188,7 @@ module.exports = function (grunt) {
     'uglify',
     'clean',
     'copy',
+    'htmlrefs',
     'htmlmin',
     // 'imageoptim',
     'notify:prod'
