@@ -107,8 +107,8 @@ module.exports = function (grunt) {
         actions: [
           {
             name: 'replace with min.css',
-            search: 'twote.css',
-            replace: 'twote.min.css'
+            search: '<link rel="stylesheet" type="text/css" href="twote.css">',
+            replace: '<style type="text/css">@@include</style>'
           },
           {
             name: 'replace with min.js',
@@ -151,7 +151,16 @@ module.exports = function (grunt) {
         }
       }
     },
-    clean: ['build/**/*'],
+    clean: {
+      pre: [
+        'build/**/*'
+      ],
+      after: [
+        'build/twote.css',
+        'build/twote.min.css',
+        'build/twote.js'
+      ]
+    },
     watch: {
       files: [
         'index.html',
@@ -163,12 +172,24 @@ module.exports = function (grunt) {
       tasks: [
         'exec:clear',
         'jshint',
-        'clean',
+        'clean:pre',
         'copy',
         'less',
         'concat',
         'notify:prod'
       ]
+    },
+    replace: {
+      dist: {
+        options: {
+          variables: {
+            'include': '<%= grunt.file.read("build/twote.min.css") %>'
+          }
+        },
+        files: [
+        {expand: true, flatten: true, src: ['build/index.html'], dest: 'build/'}
+        ]
+      }
     },
     notify: {
       dev: {
@@ -197,22 +218,25 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-regex-replace');
+  grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-devtools');
 
   grunt.registerTask('default', [
     'jshint',
-    'clean',
+    'clean:pre',
     'copy:fonts',
     'copy:html',
-    'imagemin:dist',
+    // 'imagemin:dist',
     'less',
     'concat',
     'cssmin',
     'uglify',
     'htmlmin',
     'regex-replace',
+    'replace',
+    'clean:after',
     'notify:prod'
   ]);
 
