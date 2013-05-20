@@ -228,7 +228,7 @@ module.exports = function (grunt) {
     'clean:pre',
     'copy:fonts',
     'copy:html',
-    'imagemin:dist',
+    // 'imagemin:dist',
     'less',
     'concat',
     'cssmin',
