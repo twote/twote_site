@@ -2,11 +2,33 @@
 
 module.exports = function (grunt) {
   'use strict';
+
+  var date       = new Date();
+  var timestamp  = Math.floor(date.getTime() / 1000);
+  var timestring = [
+    date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth(),
+    '/',
+    date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+    '/',
+    date.getFullYear(),
+    ' ',
+    date.getHours() < 10 ? '0' + date.getHours() : date.getHours(),
+    ':',
+    date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(),
+    ':',
+    date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+  ].join('');
+
   grunt.initConfig({
     meta: {
       version: '0.1.0',
-      timestamp: Math.floor(new Date().getTime() / 1000),
-      banner: ''
+      timestamp: timestamp,
+      banner: [
+        '/*!',
+        ' * twote.io - ' + timestring,
+        ' */',
+        ''
+      ].join('\n')
     },
     exec: {
       clear: {
@@ -75,6 +97,9 @@ module.exports = function (grunt) {
       compress: {
         files: {
           'build/twote.min.css': 'build/twote.css'
+        },
+        options: {
+          banner: '<%= meta.banner %>'
         }
       }
     },
@@ -89,19 +114,22 @@ module.exports = function (grunt) {
         }
       }
     },
-    htmlrefs: {
-      dist: {
-        src: 'index.html',
-        dest: 'build/',
-        options: {
-          'minified': '.min'
-        }
+    'regex-replace': {
+      html: {
+        src: ['build/index.html'],
+        actions: [
+          {
+            name: 'replace with min.css',
+            search: 'twote.css',
+            replace: 'twote.min.css'
+          },
+          {
+            name: 'replace with min.js',
+            search: 'twote.js',
+            replace: 'twote.min.js'
+          }
+        ]
       }
-    },
-    imageoptim: {
-      files: [
-        'build/img'
-      ],
     },
     copy: {
       img: {
@@ -175,8 +203,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-imageoptim');
-  grunt.loadNpmTasks('grunt-htmlrefs');
+  grunt.loadNpmTasks('grunt-regex-replace');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
 
@@ -188,9 +215,8 @@ module.exports = function (grunt) {
     'uglify',
     'clean',
     'copy',
-    'htmlrefs',
     'htmlmin',
-    // 'imageoptim',
+    'regex-replace',
     'notify:prod'
   ]);
 
