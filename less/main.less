@@ -1,10 +1,17 @@
-body {
+* {
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility !important;
+  .box-sizing(border-box);
+}
+
+body {
   width: 100%;
   margin: 0 auto;
-  .box-sizing(border-box);
-  text-rendering: optimizeLegibility !important;
   background: @background;
+}
+
+.font-league {
+  font-family: "LeagueGothicRegular", Arial, sans-serif;
 }
 
 .tw-layout {
@@ -21,11 +28,11 @@ body {
 
 header {
   text-align: center;
-  margin: 50px 0;
+  margin: 40px 0 30px 0;
 }
 
 header h1 {
-  font-family: "LeagueGothicRegular", Arial, sans-serif;
+  .font-league();
   letter-spacing: 0px;
   color: @textcolor;
   font-size: 124px;
@@ -35,8 +42,18 @@ header h1 {
   font-weight: 400;
 }
 
-header h1 .suffix {
+header h1 a {
+  color: @yellow;
+  text-decoration: none;
+}
 
+header h1 a .suffix {
+  color: @yellow;
+  .transition(color 0.5s ease);
+}
+
+header h1 a:hover .suffix {
+  color: @smoke;
 }
 
 header p {
@@ -46,6 +63,18 @@ header p {
   margin: 0;
   padding: 0;
   text-transform: uppercase;
+}
+
+header p .source {
+  line-height: 40px;
+  color: @greylight;
+}
+
+header p .quotes {
+  font-size: 32px;
+  position: relative;
+  top: 8px;
+  padding: 0 2px;
 }
 
 nav {
@@ -66,7 +95,7 @@ nav ol li {
 nav ol li a {
   background: @navbackground;
   text-align: center;
-  color: @navforeground;
+  color: darken(@navbackground, 30%);
   border: none;
   border-right: 1px solid @navforeground;
   text-decoration: none;
@@ -74,10 +103,16 @@ nav ol li a {
   padding: 6px 10px;
   display: block;
   float: left;
-  font-size: 16px;
-  line-height: 30px;
-  width: 100px;
+  font-size: 24px;
+  line-height: 40px;
+  width: 122px;
   position: relative;
+  text-transform: uppercase;
+  .transition(color 0.25s ease);
+}
+
+nav ol li.last a {
+  border-right: none;
 }
 
 nav ol li a:after {
@@ -91,6 +126,11 @@ nav ol li a:after {
   display: block;
   width: 0;
   .transition(bottom 0.5s ease);
+}
+
+nav ol li a:hover,
+nav ol li a.active {
+  color: @navforeground;
 }
 
 nav ol li a.active:after {
@@ -109,32 +149,38 @@ nav ol li a:hover:after {
   bottom: -10px;
 }
 
-// nav ol li a:hover,
-// nav ol li a.active {
-//   background: #fff;
-//   color: @textcolor;
-// }
-
 nav form {
   margin: 0;
   padding: 0;
 }
 
-nav input {
-  color: @navforeground;
-  outline: none;
-  border: 1px solid @navbackground;
-  background: lighten(@navbackground, 20%);
-  float: right;
-  font-size: 16px;
-  line-height: 20px;
-  padding: 10px;
+nav {
+  input {
+    color: @navforeground;
+    outline: none;
+    border: 1px solid @navbackground;
+    background: lighten(@navbackground, 20%);
+    float: right;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    width: 250px;
+    font-size: 24px;
+    border-radius: 0;
+    .transition(background 0.5s ease);
+  }
+  .placeholder-color(darken(@navbackground, 30%););
+  .placeholder-hover-color(@greylight);
+  .placeholder-focus-color(@greylight);
+  input:hover {
+    background: @smoke;
+  }
 }
-
-.placeholder-color(@navforeground);
 
 nav input:focus {
   outline: none;
+  background: @smoke;
 }
 
 ol.tw-twotes {
@@ -149,17 +195,18 @@ ol.tw-twotes li {
   margin: 0;
   padding: 0;
   font-family: "LeagueGothicRegular", Helvetica, Arial, sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   text-transform: uppercase;
   border-top: 1px solid @grey;
   margin: 0;
   padding: 20px 20px 15px 20px;
-  letter-spacing: 2px;
+  // letter-spacing: 2px;
   cursor: pointer;
+  .transition(background 0.2s linear);
 }
 
 ol.tw-twotes li:hover {
-  background: darken(@yellow, 30%);
+  background: @grey;
 }
 
 ol.tw-twotes li .item {
@@ -169,18 +216,41 @@ ol.tw-twotes li .item {
 }
 
 ol.tw-twotes li .votecount {
-  font-size: 20px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 48px;
   width: 120px;
-  color: @lightgrey;
+  color: @greylight;
 }
 
 ol.tw-twotes li .lastvote {
-  font-size: 20px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 48px;
   float: right;
   color: @textcolor;
 }
+
+ol.tw-twotes li.head,
+ol.tw-twotes li.head:hover {
+  border: none;
+  background: none;
+  cursor: default;
+}
+
+ol.tw-twotes li.head .votecount {
+  line-height: 24px;
+  font-size: 24px;
+}
+
+ol.tw-twotes li.head .topic {
+  line-height: 24px;
+  font-size: 24px;
+}
+
+ol.tw-twotes li.head .lastvote {
+  line-height: 24px;
+  font-size: 24px;
+}
+
 
 /**
  * For modern browsers

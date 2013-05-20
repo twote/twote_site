@@ -11,3 +11,21 @@
   input::-moz-placeholder { color: @color; }
   input:-ms-input-placeholder { color: @color; }
 }
+
+.placeholder-hover-color(@color: #999) {
+  input:hover::-webkit-input-placeholder { color: @color; }
+  input:hover::-moz-placeholder { color: @color; }
+  input:hover:::-moz-placeholder { color: @color; }
+  input:hover::-ms-input-placeholder { color: @color; }
+}
+
+.placeholder-focus-color(@color: #999) {
+  input:focus::-webkit-input-placeholder { color: @color; }
+  input:focus::-moz-placeholder { color: @color; }
+  input:focus:::-moz-placeholder { color: @color; }
+  input:focus::-ms-input-placeholder { color: @color; }
+}
+
+.font-league() {
+  font-family: "LeagueGothicRegular", Arial, sans-serif;
+}
