@@ -131,6 +131,13 @@ module.exports = function (grunt) {
         flatten: true,
         src: ['index.html'],
         dest: 'build'
+      },
+      image: {
+        filter: 'isFile',
+        expand: true,
+        flatten: true,
+        src: ['img/*'],
+        dest: 'build/img'
       }
     },
     imagemin: {
@@ -140,15 +147,6 @@ module.exports = function (grunt) {
         },
         files: {
           'build/img': 'img/*'
-        }
-      },
-      dev: {
-        options: {
-          optimizationLevel: 0
-        },
-        files: {
-          'dev/img.png': 'src/img.png',
-          'dev/img.jpg': 'src/img.jpg'
         }
       }
     },
@@ -166,10 +164,9 @@ module.exports = function (grunt) {
         'jshint',
         'clean',
         'copy',
-        'imagemin:dev',
         'less',
         'concat',
-        'notify:dev'
+        'notify:prod'
       ]
     },
     notify: {
@@ -206,7 +203,8 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'clean',
-    'copy',
+    'copy:fonts',
+    'copy:html',
     'imagemin:dist',
     'less',
     'concat',
