@@ -38,24 +38,10 @@ module.exports = function (grunt) {
     },
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true
+        jshintrc: '.jshintrc',
       },
-      app: {
-        options: {
-          browser: true
-        },
-        files: {
-          src: ['index.js']
-        }
+      files: {
+        src: ['lib/**/*.js']
       }
     },
     less: {
