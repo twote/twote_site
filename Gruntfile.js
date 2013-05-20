@@ -176,7 +176,7 @@ module.exports = function (grunt) {
         'copy',
         'less',
         'concat',
-        'notify:prod'
+        'notify:dev'
       ]
     },
     replace: {
