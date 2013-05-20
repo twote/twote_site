@@ -192,6 +192,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-regex-replace');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-devtools');
 
   grunt.registerTask('default', [
     'jshint',
