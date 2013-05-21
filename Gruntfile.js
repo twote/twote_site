@@ -132,23 +132,27 @@ module.exports = function (grunt) {
         flatten: true,
         src: ['index.html'],
         dest: 'build'
-      },
-      image: {
-        filter: 'isFile',
-        expand: true,
-        flatten: true,
-        src: ['img/*'],
-        dest: 'build/img'
       }
     },
     imagemin: {
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'img',
+          src: ['*'],
+          dest: 'build/img'
+        }]
+      },
       dist: {
         options: {
           optimizationLevel: 4
         },
-        files: {
-          'build/img': 'img/*'
-        }
+        files: [{
+          expand: true,
+          cwd: 'img',
+          src: ['*'],
+          dest: 'build/img'
+        }]
       }
     },
     clean: {
@@ -164,16 +168,17 @@ module.exports = function (grunt) {
     watch: {
       files: [
         'index.html',
-        'lib/*',
         'lib/**/*',
-        'less/*',
-        'img/*'
+        'lib/**/*',
+        'less/**/*',
+        'img/**/*'
       ],
       tasks: [
         'exec:clear',
         'jshint',
         'clean:pre',
         'copy',
+        'imagemin:dev',
         'less',
         'concat',
         'notify:dev'
@@ -226,9 +231,8 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'clean:pre',
-    'copy:fonts',
-    'copy:html',
-    // 'imagemin:dist',
+    'copy',
+    'imagemin:dist',
     'less',
     'concat',
     'cssmin',
