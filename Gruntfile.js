@@ -176,7 +176,7 @@ module.exports = function (grunt) {
         'copy',
         'less',
         'concat',
-        'notify:dev'
+        // 'notify:dev'
       ]
     },
     replace: {
@@ -237,7 +237,7 @@ module.exports = function (grunt) {
     'regex-replace',
     'replace',
     'clean:after',
-    'notify:prod'
+    // 'notify:prod'
   ]);
 
 };
